@@ -9,9 +9,9 @@ namespace Students.Web.Controllers
     {
         private static readonly List<UserViewModel> Users = new List<UserViewModel>
         {
-            new UserViewModel { Id = 1, Email = "dan@yahoo.com", UserName = "dan" },
-            new UserViewModel { Id = 2, Email = "andrei@yahoo.com", UserName = "andrei" },
-            new UserViewModel { Id = 3, Email = "vlad@yahoo.com", UserName = "vlad" },
+            new UserViewModel { Id = 1, Email = "dan@yahoo.com", UserName = "dan", Address = new AddressViewModel()},
+            new UserViewModel { Id = 2, Email = "andrei@yahoo.com", UserName = "andrei", Address = new AddressViewModel() },
+            new UserViewModel { Id = 3, Email = "vlad@yahoo.com", UserName = "vlad", Address = new AddressViewModel() },
         };
 
         [HttpGet]
@@ -29,6 +29,14 @@ namespace Students.Web.Controllers
         }
 
         [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var model = Users.FirstOrDefault(x => x.Id == id);
+
+            return View("Add", model);
+        }
+
+        [HttpGet]
         public ActionResult Add()
         {
             return View();
@@ -37,7 +45,19 @@ namespace Students.Web.Controllers
         [HttpPost]
         public ActionResult Add(UserViewModel user)
         {
-            Users.Add(user);
+            if (user.Id != 0)
+            {
+                // update
+                var existingUser = Users.Find(x => x.Id == user.Id);
+                existingUser.Address = user.Address;
+                existingUser.Email = user.Email;
+                existingUser.UserName = user.UserName;
+            }
+            else
+            {
+                user.Id = Users.Count + 1;
+                Users.Add(user);
+            }
 
             return RedirectToAction("Index");
         }
