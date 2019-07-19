@@ -12,7 +12,7 @@ namespace Students.Web.Controllers
             new UserViewModel { Id = 1, Email = "dan@yahoo.com", UserName = "dan", Address = new AddressViewModel()},
             new UserViewModel { Id = 2, Email = "andrei@yahoo.com", UserName = "andrei", Address = new AddressViewModel() },
             new UserViewModel { Id = 3, Email = "vlad@yahoo.com", UserName = "vlad", Address = new AddressViewModel() },
-        };
+        };  
 
         [HttpGet]
         public ActionResult Index()
