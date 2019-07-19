@@ -1,4 +1,4 @@
-﻿namespace WebApplication.Models
+﻿namespace Students.Web.Models
 {
     public class UserViewModel
     {

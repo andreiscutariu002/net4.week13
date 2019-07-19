@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using WebApplication.Models;
+using Students.Web.Models;
 
-namespace WebApplication.Controllers
+namespace Students.Web.Controllers
 {
     public class UserController : Controller
     {
