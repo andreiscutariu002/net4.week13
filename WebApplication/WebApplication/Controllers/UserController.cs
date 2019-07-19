@@ -12,7 +12,7 @@ namespace Students.Web.Controllers
             new UserViewModel { Id = 1, Email = "dan@yahoo.com", UserName = "dan" },
             new UserViewModel { Id = 2, Email = "andrei@yahoo.com", UserName = "andrei" },
             new UserViewModel { Id = 3, Email = "vlad@yahoo.com", UserName = "vlad" },
-        }; 
+        };
 
         [HttpGet]
         public ActionResult Index()
@@ -35,13 +35,8 @@ namespace Students.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddNew()
+        public ActionResult Add(UserViewModel user)
         {
-            var username = Request.Form["username"];
-            var email = Request.Form["email"];
-
-            var user = new UserViewModel { Email = email, UserName = username, Id = Users.Count + 1 };
-
             Users.Add(user);
 
             return RedirectToAction("Index");
