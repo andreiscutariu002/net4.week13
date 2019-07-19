@@ -1,4 +1,5 @@
-﻿@model Students.Web.Models.UserViewModel
+﻿@using Students.Web.Models
+@model Students.Web.Models.UserViewModel
 
 @{
     if (Model == null)
@@ -45,6 +46,13 @@
         @*<div class="form-group">
             @Html.ValidationSummary(false, "", new { @class = "text-danger" })
         </div>*@
+
+        @Html.DropDownList("StudentGender", 
+            new SelectList(Enum.GetValues(typeof(Gender))),
+            "Select Gender",
+            new { @class = "form-control" })
+
+        <br/>
 
         <input type="submit" />
     }

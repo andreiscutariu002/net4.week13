@@ -17,6 +17,8 @@ namespace Students.Web.Models
         public string Email { get; set; }
 
         public AddressViewModel Address { get; set; }
+
+        public Gender Gender { get; set; }
     }
 
     public class AddressViewModel
@@ -27,5 +29,11 @@ namespace Students.Web.Models
         [DisplayName("Oras")]
         [Required]
         public string City { get; set; }
+    }
+
+    public enum Gender
+    {
+        Male,
+        Female
     }
 }
