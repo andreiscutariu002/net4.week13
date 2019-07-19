@@ -1,15 +1,19 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Students.Web.Models
 {
     public class UserViewModel
     {
-        public int Id { get; set; }
+        public int? Id { get; set; } 
 
         [DisplayName("Nume utilizator")]
+        [MinLength(6)]
+        [MaxLength(10)]
         public string UserName { get; set; }
 
         [DisplayName("Adresa de email")]
+        [Required]
         public string Email { get; set; }
 
         public AddressViewModel Address { get; set; }
@@ -21,6 +25,7 @@ namespace Students.Web.Models
         public string Street { get; set; }
 
         [DisplayName("Oras")]
+        [Required]
         public string City { get; set; }
     }
 }

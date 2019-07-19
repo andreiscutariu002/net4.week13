@@ -20,13 +20,13 @@
         <tbody>
             @{
                 foreach (var user in Model)
-                {   
+                {       
                         <tr>
                             <td>@user.Id</td>
                             <td>@user.Email</td>
                             <td>@user.UserName</td>
-                            <td><a href="/User/Details/@user.Id">Go</a></td>
-                            <td><a href="/User/Edit/@user.Id">Go</a></td>
+                            <td>@Html.ActionLink("Go", "Details", "User", new { id = user.Id }, null)</td>
+                            <td>@Html.ActionLink("Go", "Edit", "User", new { id = user.Id }, null)</td>
                         </tr>
                 }
             }

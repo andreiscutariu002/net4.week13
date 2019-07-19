@@ -45,9 +45,13 @@ namespace Students.Web.Controllers
         [HttpPost]
         public ActionResult Add(UserViewModel user)
         {
-            if (user.Id != 0)
+            if (!ModelState.IsValid)
             {
-                // update
+                return View("Add", user);
+            }
+
+            if (user.Id != null && user.Id != 0)
+            {
                 var existingUser = Users.Find(x => x.Id == user.Id);
                 existingUser.Address = user.Address;
                 existingUser.Email = user.Email;
