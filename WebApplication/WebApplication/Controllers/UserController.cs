@@ -7,7 +7,7 @@ namespace Students.Web.Controllers
 {
     public class UserController : Controller
     {
-        private static readonly List<UserViewModel> users = new List<UserViewModel>
+        private static readonly List<UserViewModel> Users = new List<UserViewModel>
         {
             new UserViewModel { Id = 1, Email = "dan@yahoo.com", UserName = "dan" },
             new UserViewModel { Id = 2, Email = "andrei@yahoo.com", UserName = "andrei" },
@@ -17,13 +17,13 @@ namespace Students.Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return View(users);
+            return View(Users);
         }
 
         [HttpGet]
         public ActionResult Details(int id)
         {
-            var model = users.Where(x => x.Id == id).FirstOrDefault();
+            var model = Users.FirstOrDefault(x => x.Id == id);
 
             return View(model);
         }
@@ -40,9 +40,9 @@ namespace Students.Web.Controllers
             var username = Request.Form["username"];
             var email = Request.Form["email"];
 
-            var user = new UserViewModel { Email = email, UserName = username, Id = users.Count + 1 };
+            var user = new UserViewModel { Email = email, UserName = username, Id = Users.Count + 1 };
 
-            users.Add(user);
+            Users.Add(user);
 
             return RedirectToAction("Index");
         }
