@@ -7,7 +7,6 @@ namespace Students.Web.Controllers
     {
         public ActionResult Index()
         {
-            // simulate go to database
             var model = new UserViewModel() { Email = "andrei@yahoo.com", UserName = "andrei"  };
 
             return View(model);
